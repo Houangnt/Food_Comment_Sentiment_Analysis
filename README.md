@@ -20,4 +20,4 @@ or
 
 python3 app.py
 
-<img src="https://github.com/Houangnt/Food_Comment_Sentiment_Analysis/blob/main/demo.png" width="180" title="Homepage"> ➜ Content     
+<img src="https://github.com/Houangnt/Food_Comment_Sentiment_Analysis/blob/main/demo.png">    
