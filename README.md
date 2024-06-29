@@ -8,5 +8,5 @@ wget https://public.vinai.io/PhoBERT_base_transformers.tar.gz
 tar -xzvf PhoBERT_base_transformers.tar.gz
 RUN INFERENCE:
 python3 infer.py 
-or 
+or </br>
 python3 app.py
