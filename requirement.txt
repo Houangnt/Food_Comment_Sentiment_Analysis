@@ -1,0 +1,10 @@
+vncorenlp
+transformers
+fastBPE
+fairseq
+pandas
+sklearn
+matplotlib
+nltk
+tensorflow
+flask

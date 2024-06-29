@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+        .form-container input[type=text] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .result-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Food Sentiment Analysis</h2>
+        <label for="comment">Enter your comment:</label>
+        <input type="text" id="comment" name="comment" placeholder="Type your comment...">
+        <button onclick="submitComment()">Submit</button>
+    </div>
+    <div class="result-container" id="result">
+        <!-- Result will be displayed here -->
+    </div>
+
+    <script>
+        function submitComment() {
+            const comment = document.getElementById('comment').value;
+            axios.post('/predict', { text: comment })
+                .then(response => {
+                    const rating = response.data.rating.toFixed(2);  // Limit to 2 decimal places
+                    document.getElementById('result').innerHTML = `
+                        <h3>Rating:</h3>
+                        <p>${rating}</p>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error predicting:', error);
+                });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>
